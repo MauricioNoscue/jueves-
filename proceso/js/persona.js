@@ -25,7 +25,7 @@ fetch(url)
                     <td>${persona.telefono}</td>
                     <td>${persona.edad}</td>
                     <td><img src="img/boton-editar.png" class="action-btn iconn" onclick="modificar(${persona.id_persona}, '${persona.nombre}', '${persona.apellido}',${persona.telefono}, ${persona.edad})"></td>
-                    <td><img src="img/eliminar.png" class="action-btn iconn" data-bs-toggle="modal" data-bs-target="#eliminar"></td>
+                    <td><img src="img/eliminar.png" class="action-btn iconn" onclick="eliminar(${persona.id_persona})"></td>
                 </tr>
             `;
         });
@@ -37,8 +37,12 @@ fetch(url)
 
 
 
+function eliminar(id){
+    document.getElementById('id_persona').value = id;
 
-    // const url2= 'http://localhost/jueves-/proceso/persona/modificar.php';
+    const modal2 = new bootstrap.Modal(document.getElementById('eliminar'));
+    modal2.show();
+}
 
 function modificar(id, nombre, apellido, telefono, edad) {
     // Cargar los datos en los campos del formulario

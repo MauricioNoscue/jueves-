@@ -8,7 +8,7 @@ class Consultar extends Persona {
 
     public function consultar() {
         $conexion = new Conexion();
-        $this->sqlInsert = "SELECT * FROM persona;";
+        $this->sqlInsert = "SELECT * FROM persona ORDER BY  id_persona ASC";
         
         $resultado = $conexion->consulta($this->sqlInsert, []);
 

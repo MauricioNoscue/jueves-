@@ -16,4 +16,3 @@
     $persona->modifico();
 
 
-?>
