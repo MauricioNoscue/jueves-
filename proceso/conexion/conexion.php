@@ -12,7 +12,7 @@
             $this->usuario="postgres";
             $this->password="123456";
             $this->puerto="5432";
-            $this->baseDatos="persona";
+            $this->baseDatos="ejerciciojueves";
         }
 
         public function conectar(){
@@ -23,7 +23,7 @@
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // Establecer el modo de fetch a asociativo
                 ]);
             
-                //echo "Conexión exitosa a PostgreSQL";
+                // echo "Conexión exitosa a PostgreSQL";
             
             } catch (PDOException $e) {
                 echo 'Error en la conexión: ' . $e->getMessage();
@@ -39,14 +39,31 @@
             $stmt->execute($valores);
         }
 
-        public function consulta($querySql){
-            $conexion= $this->conectar();
-            $consulta= $conexion->query($querySql);
-            while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)){
-                $resultado[]= $fila;
-            } 
-            return $resultado;
+        // public function consulta($querySql){
+        //     $conexion= $this->conectar();
+        //     $consulta= $conexion->query($querySql);
+        //     while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)){
+        //         $resultado[]= $fila;
+        //     } 
+        //     return $resultado;
+        // }
+        public function consulta($querySql, $valores) {
+            $conexion = $this->conectar(); // Conectar a la base de datos
+            $stmt = $conexion->prepare($querySql); // Preparar la consulta
+            $stmt->execute($valores); // Ejecutar la consulta con los valores
+        
+            $resultado = []; // Inicializar el array para almacenar resultados
+            
+            // Obtener los resultados
+            while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $resultado[] = $fila; // Agregar cada fila al resultado
+            }
+        
+            return $resultado; // Retornar los resultados obtenidos
         }
+        
+        
+        
         public function eliminar($tabla, $condicion, $valores){
             $sql = "DELETE FROM $tabla WHERE $condicion";
             $pdo = $this->conectar();

@@ -1,24 +1,29 @@
-<?php 
-    include('../conexion/conexion.php');
-    include('persona.php');
+<?php
+include('../conexion/conexion.php');
+include('persona.php');
 
-    class Modificar extends Persona{
+class Modificar extends Persona
+{
 
-        private $sqlModificar;
-        public function registro(){
-            $conexion=new Conexion();
-            $this->sqlModificar="INSERT INTO persona(nombre,apellido,telefono,edad)
-	                            VALUES (:nombre, :apellido, :telefono, :edad);";
-            $valores=[
-                ':nombre' => $this->getNombrePersona(),
-                ':apellido' => $this->getApellido(),
-                ':telefono' => $this->getTelefonoPersona(),
-                ':edad' => $this->getEdadPersona(),
+    private $sqlModificar;
+    public function modifico()
+    {
+        $idPersona = $_POST['editarId'];
+        $conexion = new Conexion();
+        $this->sqlModificar = "UPDATE persona
+                                SET nombre=:nombre, apellido=:apellido, telefono=:telefono, edad=:edad
+                                WHERE id_persona=:id_persona;";
+        $valores = [
+            ':id_persona' => $idPersona,
+            ':nombre' => $this->getNombrePersona(),
+            ':apellido' => $this->getApellidoPersona(),
+            ':telefono' => $this->getCelularPersona(),
+            ':edad' => $this->getEdadPersona(),
+        ];
 
-            ];
+        $conexion->ejecutar($this->sqlModificar, $valores);
+        header('Location:http://localhost/registroPersona/index.php');
 
-            $conexion->ejecutar($this->sqlModificar, $valores);
-            //return $this->sqlModificar;                    
-        }
-        
     }
+
+}

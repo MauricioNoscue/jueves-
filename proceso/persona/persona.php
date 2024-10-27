@@ -2,8 +2,9 @@
 class Persona{
     private $nombrePersona;
     private $apellidoPersona;
-    private $telefonoPersona;
+    private $celularPersona;
     private $edadPersona;
+
 
     public function setNombrePersona($nombrePersona){
         $this->nombrePersona=$nombrePersona;
@@ -11,17 +12,17 @@ class Persona{
     public function getNombrePersona(){
         return $this->nombrePersona;
     }
-    public function setApellido($apellidoPersona){
+    public function setApellidoPersona($apellidoPersona){
         $this->apellidoPersona=$apellidoPersona;
     }
-    public function getApellido(){
+    public function getApellidoPersona(){
         return $this->apellidoPersona;
     }
-    public function setTelefonoPersona($telefonoPersona){
-        $this->telefonoPersona=$telefonoPersona;
+    public function setCelularPersona($celularPersona){
+        $this->celularPersona=$celularPersona;
     }
-    public function getTelefonoPersona(){
-        return $this->telefonoPersona;
+    public function getCelularPersona(){
+        return $this->celularPersona;
     }
     public function setEdadPersona($edadPersona){
         $this->edadPersona=$edadPersona;
@@ -30,5 +31,3 @@ class Persona{
         return $this->edadPersona;
     }
 }
-
-?>

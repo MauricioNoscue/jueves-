@@ -1,17 +1,17 @@
 <?php
 
-include('../../proceso/conexion/conexion.php');
+// include('../../proceso/conexion/conexion.php');
 
-$SqlPersona = "SELECT * FROM persona";
+// $SqlPersona = "SELECT * FROM persona";
 
-$conexion = new conexion;
-$datosPersona = $conexion->consulta($SqlPersona);
+// $conexion = new conexion;
+// $datosPersona = $conexion->consulta($SqlPersona);
 
-$personaId = $_POST['id_persona'];
-$sqlPersona = "SELECT * FROM persona WHERE personaId=:id_persona;";
-$values = array(
-    ':id_persona' => $personaId,
-);
+// $personaId = $_POST['id_persona'];
+// $sqlPersona = "SELECT * FROM persona WHERE personaId=:id_persona;";
+// $values = array(
+//     ':id_persona' => $personaId,
+// );
 
 ?>
 
@@ -58,6 +58,7 @@ $values = array(
         <table class="table">
             <thead>
                 <tr>
+                <th scope="col">ID</th>
 
                     <th scope="col">Nombre</th>
 
