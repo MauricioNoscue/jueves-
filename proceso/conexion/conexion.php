@@ -12,7 +12,7 @@
             $this->usuario="postgres";
             $this->password="123456";
             $this->puerto="5432";
-            $this->baseDatos="ejerciciojueves";
+            $this->baseDatos="persona";
         }
 
         public function conectar(){
@@ -26,17 +26,17 @@
                 // echo "Conexión exitosa a PostgreSQL";
             
             } catch (PDOException $e) {
-                echo 'Error en la conexión: ' . $e->getMessage();
+                echo 'Error en f la conexión: ' . $e->getMessage();
             }
             return $pdo;
         }
 
-        public function ejecutar($sql, $valores){
-            $pdo=$this->conectar();
-            // Preparar la consulta
+        public function ejecutar($sql, $valores) {
+            $pdo = $this->conectar();
+            if (!$pdo) return false; // Retorna false si no hay conexión
+    
             $stmt = $pdo->prepare($sql);
-            // Ejecutar la consulta con los valores directamente en execute()
-            $stmt->execute($valores);
+            return $stmt->execute($valores); // Retorna true o false según el éxito de la ejecución
         }
 
         // public function consulta($querySql){

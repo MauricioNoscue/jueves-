@@ -5,7 +5,7 @@ include('persona.php');
 class Modificar extends Persona
 {
 
-    private $sqlModificar;
+    private $sqlModificar; 
     public function modifico()
     {
         $idPersona = $_POST['editarId'];
@@ -21,8 +21,14 @@ class Modificar extends Persona
             ':edad' => $this->getEdadPersona(),
         ];
 
-        $conexion->ejecutar($this->sqlModificar, $valores);
-        header('Location:http://localhost/registroPersona/index.php');
+        
+        $resultado = $conexion->ejecutar($this->sqlModificar, $valores);
+        header('Content-Type: application/json');
+        echo json_encode($resultado);
+
+        header('Location:http://localhost/jueves-/dasboard/index.html');
+
+        
 
     }
 

@@ -15,7 +15,7 @@ class Consultar extends Persona {
         header('Content-Type: application/json');
         echo json_encode($resultado);
     }
-}
+} 
 
 $consultar = new Consultar();
 $consultar->consultar();

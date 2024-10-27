@@ -79,34 +79,21 @@
                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Insertar</h1>
                         <form class="row" method="post" action="../proceso/persona/registrarPersona.php">
                             <div class="col-md-12">
-                                <label for="nombre" class="form-label">Primer Nombre</label>
+                                <label for="nombre" class="form-label"> Nombre</label>
                                 <input type="text" class="form-control" id="txtNombre" name="txtNombre" required>
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
                             </div>
+                           
                             <div class="col-md-12">
-                                <label for="segundoNombre" class="form-label">Segundo Nombre</label>
-                                <input type="text" class="form-control" id="segundoNombre">
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="apellido" class="form-label">Primer Apellido</label>
+                                <label for="apellido" class="form-label"> Apellido</label>
                                 <input type="text" class="form-control" id="txtApellido" name="txtApellido" required>
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <label for="segundoApellido" class="form-label">Segundo Apellido</label>
-                                <input type="text" class="form-control" id="segundoApellido">
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                            </div>
-
+    
                             <div class="col-md-6">
                                 <label for="celular" class="form-label">Celular</label>
                                 <input type="number" class="form-control" id="txtCelular" name="txtCelular" required>
@@ -114,16 +101,6 @@
                                     Please provide a valid city.
                                 </div>
                             </div>
-                            <!-- <div class="col-md-3">
-                                <label for="validationCustom04" class="form-label">State</label>
-                                <select class="form-select" id="validationCustom04" required>
-                                    <option selected disabled value="">Choose...</option>
-                                    <option>...</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select a valid state.
-                                </div>
-                            </div> -->
                             <div class="col-md-6">
                                 <label for="edad" class="form-label">Edad</label>
                                 <input type="number" class="form-control" id="txtEdad" name="txtEdad" required>
@@ -149,31 +126,21 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <h1 class="modal-title fs-5" id="editarLabel">Editar Persona</h1>
-                        <form class="row" method="post" action="../proceso/persona/modificar.php">
+                        <form class="row" method="post" action="../proceso/persona/modificarPersona.php">
                             <input type="" id="editarId" name="editarId"> 
                             <div class="col-md-12">
                                 <label for="nombre" class="form-label">Primer Nombre</label>
                                 <input type="text" class="form-control" id="editarNombre" name="editarNombre" required>
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
-                            <div class="col-md-12">
-                                <label for="segundoNombre" class="form-label">Segundo Nombre</label>
-                                <input type="text" class="form-control" id="editarSegundoNombre"
-                                    name="editarSegundoNombre">
-                                <div class="valid-feedback">Looks good!</div>
-                            </div>
+                         
                             <div class="col-md-12">
                                 <label for="apellido" class="form-label">Primer Apellido</label>
                                 <input type="text" class="form-control" id="editarApellido" name="editarApellido"
                                     required>
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
-                            <div class="col-md-12">
-                                <label for="segundoApellido" class="form-label">Segundo Apellido</label>
-                                <input type="text" class="form-control" id="editarSegundoApellido"
-                                    name="editarSegundoApellido">
-                                <div class="valid-feedback">Looks good!</div>
-                            </div>
+                         
                             <div class="col-md-6">
                                 <label for="celular" class="form-label">Celular</label>
                                 <input type="number" class="form-control" id="editarCelular" name="editarCelular"
