@@ -12,7 +12,7 @@
             $this->usuario="postgres";
             $this->password="123456";
             $this->puerto="5432";
-            $this->baseDatos="persona";
+            $this->baseDatos="ejerciciojueves";
         }
 
         public function conectar(){

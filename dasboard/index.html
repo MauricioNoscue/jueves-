@@ -7,6 +7,7 @@
     <title>Memory Start</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../formulario/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../fontawesome/css/all.css">
 
 </head>
 
@@ -24,16 +25,21 @@
         <div class="header">
             <div class="memory"><img src="img/segundoMemory.png" class="iconno" alt=""><strong>Memory Start</strong>
             </div>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertar">
-                Insertar
-            </button>
-            <div class="search-box">
-                <input type="text" placeholder="Buscar...">
-            </div>
+            <!-- <input type="text" id="search" placeholder="Buscar..." class="form-control mb-3"> -->
+
+            <div class="inputBuscar"> <i class="fa-solid fa-magnifying-glass icono"></i><input type="text" id="busqueda"
+                    placeholder="Buscar..." oninput="buscar()" class="form-control"></div>
         </div>
 
         <div id="usuarios" class="section">
-            <h3>Usuarios</h3>
+            <div class="encabezado">
+                <h3>Usuarios</h3>
+                <div class="insertar">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertar">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+            </div>
             <table class="table" id="tabla-personas">
                 <thead class="color">
                     <tr>
@@ -59,19 +65,20 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
-                      <form action="../proceso/persona/eliminarPersona.php"   method="POST">
-                        <input type="hidden" id="id_persona" name="id_persona2">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar</h1>
-                        Estás seguro de que quieres eliminar los datos de la persona
+                        <form action="../proceso/persona/eliminarPersona.php" method="POST">
+                            <input type="hidden" id="id_persona" name="id_persona2">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar</h1>
+                            Estás seguro de que quieres eliminar los datos de:<input type="text" class="nombrePersonaEliminar" id="nombreEliminar" readonly>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-danger"  >Eliminar</button>
-                        </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </div>
 
-                      </form>
+                        </form>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -91,7 +98,7 @@
                                     Looks good!
                                 </div>
                             </div>
-                           
+
                             <div class="col-md-12">
                                 <label for="apellido" class="form-label"> Apellido</label>
                                 <input type="text" class="form-control" id="txtApellido" name="txtApellido" required>
@@ -99,7 +106,7 @@
                                     Looks good!
                                 </div>
                             </div>
-    
+
                             <div class="col-md-6">
                                 <label for="celular" class="form-label">Celular</label>
                                 <input type="number" class="form-control" id="txtCelular" name="txtCelular" required>
@@ -114,13 +121,13 @@
                                     Please provide a valid zip.
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success">Guardar</button>
-
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">Guardar <i class="fa-regular fa-floppy-disk"></i></button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -132,20 +139,20 @@
                     <div class="modal-body">
                         <h1 class="modal-title fs-5" id="editarLabel">Editar Persona</h1>
                         <form class="row" method="post" action="../proceso/persona/modificarPersona.php">
-                            <input type="hidden" id="editarId" name="editarId"> 
+                            <input type="hidden" id="editarId" name="editarId">
                             <div class="col-md-12">
                                 <label for="nombre" class="form-label">Primer Nombre</label>
                                 <input type="text" class="form-control" id="editarNombre" name="editarNombre" required>
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
-                         
+
                             <div class="col-md-12">
                                 <label for="apellido" class="form-label">Primer Apellido</label>
                                 <input type="text" class="form-control" id="editarApellido" name="editarApellido"
                                     required>
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
-                         
+
                             <div class="col-md-6">
                                 <label for="celular" class="form-label">Celular</label>
                                 <input type="number" class="form-control" id="editarCelular" name="editarCelular"
@@ -157,12 +164,13 @@
                                 <input type="number" class="form-control" id="editarEdad" name="editarEdad" required>
                                 <div class="invalid-feedback">Please provide a valid zip.</div>
                             </div>
-                            <button type="submit" class="btn btn-success">Guardar</button>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">Guardar <i class="fa-regular fa-floppy-disk"></i></button>
+                                <button type="button" class="btn btn-secondary"data-bs-dismiss="modal">Cancelar</button>
+                            </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    </div>
+
                 </div>
             </div>
         </div>
