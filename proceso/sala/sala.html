@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Sala</title>
+    <link rel="stylesheet" href="estilos.css"> 
+</head>
+<body>
+    <h1>Crear Sala</h1>
+    <form method="post" action="recicbirSala.php">
+        <div>
+            <label for="nombreSala">CREADOR</label>
+            <div id="creador"></div>
+        </div>
+        <div>
+            <label for="nombreSala">Nombre de la Sala:</label>
+            <input type="text" id="nombreSala" name="nombreSala" required>
+        </div>
+        <div>
+            <label for="confi">Configuración</label>
+            <div id="confi"></div>
+        </div>
+        <div>
+            <label for="capacidad">Capacidad:</label>
+            <input type="number" id="capacidad" name="capacidad" required>
+        </div>
+        <input type="hidden" id="configuracion_id" name="configuracion_id">
+        <button type="submit">Crear Sala</button>
+    </form>
+
+
+
+  
+</body>
+</html>

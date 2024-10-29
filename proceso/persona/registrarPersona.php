@@ -14,6 +14,3 @@
     $persona->setEdadPersona($edad);
 
     $persona->registro();
-
-
-?>
