@@ -5,14 +5,14 @@
         private $usuario;
         private $password;
         private $puerto;
-        private $baseDatos;
+        private $baseDatos; 
 
         public function __construct(){
             $this->servidor="localhost";
             $this->usuario="postgres";
             $this->password="123456";
             $this->puerto="5432";
-            $this->baseDatos="ejerciciojueves";
+            $this->baseDatos="corredor";
         }
 
         public function conectar(){
@@ -62,8 +62,21 @@
             return $resultado; // Retornar los resultados obtenidos
         }
         
+
+
+        public function obtenerUltimoIdConfiguracion() {
+            $sql = "SELECT id_configuracion_juego FROM configuracionJuego ORDER BY id_configuracion_juego DESC LIMIT 1";
+            $conexion = $this->conectar(); // Conectar a la base de datos
+            $stmt = $conexion->prepare($sql); // Preparar la consulta
+            $stmt->execute(); // Ejecutar la consulta
         
+            // Obtener el resultado
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC); // Obtener la fila asociativa
         
+            return $resultado ? $resultado['id_configuracion_juego'] : null; // Retornar el último id o null si no existe
+        }
+        
+
         public function eliminar($tabla, $condicion, $valores){
             $sql = "DELETE FROM $tabla WHERE $condicion";
             $pdo = $this->conectar();

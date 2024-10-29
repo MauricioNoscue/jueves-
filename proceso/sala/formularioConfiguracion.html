@@ -1,0 +1,93 @@
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Configuración del Juego</title>
+    </head>
+    <body>
+        <form id="configuracionForm" method="POST" action="configuracionPrueba.php">
+            <label for="tipoJuego">Tipo de Juego:</label>
+            <select id="tipoJuego" name="txttipoJuego">
+                <option value="">Selecciona un tipo de juego</option>
+                <option value="1">PlanetScape</option>
+                <option value="2">Memorix</option>
+            </select>
+        
+            <label for="modoJuego">Modo de Juego:</label>
+            <select id="modoJuego" name="txtmodoJuego">
+                <option value="">Selecciona un modo de juego</option>
+                <option value="1">Solo</option>
+                <option value="2">Multijugador</option>
+            </select>
+        
+            <div id="dificultadContainer" style="display: none;">
+                <label for="dificultad">Dificultad:</label>
+                <select id="dificultad" name="txtdificultad">
+                    <option value="1">Básico</option>
+                    <option value="2">Desafiante</option>
+                    <option value="3">Pro</option>
+                </select>
+            </div>
+        
+            <label for="tematica">Temática:</label>
+            <select id="tematica" name="txtTematica">
+                <option value="">Selecciona una temática</option>
+                <option value="1">Arma tu nave</option>
+                <option value="2">Derrota el enemigo</option>
+                <option value="3">Quimilab</option>
+                <option value="4">MagicRoom</option>
+                <option value="5">Ofimundo</option>
+                <option value="6">Bookify</option>
+            </select>
+        
+            <input type="submit" value="Guardar">
+        </form>
+        
+        <script>
+            document.getElementById('tipoJuego').addEventListener('change', function() {
+                const dificultadContainer = document.getElementById('dificultadContainer');
+                const tematicaSelect = document.getElementById('tematica');
+
+                // Limpiar todas las opciones del select de temáticas
+                tematicaSelect.innerHTML = '<option value="">Selecciona una temática</option>';
+
+                if (this.value === "1") { // PlanetScape
+                    dificultadContainer.style.display = 'none'; 
+                    // Agregar opciones específicas para PlanetScape
+                    const option1 = document.createElement('option');
+                    option1.value = "1";
+                    option1.textContent = "Arma tu nave";
+                    tematicaSelect.appendChild(option1);
+
+                    const option2 = document.createElement('option');
+                    option2.value = "2";
+                    option2.textContent = "Derrota el enemigo";
+                    tematicaSelect.appendChild(option2);
+                } else if (this.value === "2") { // Memorix
+                    dificultadContainer.style.display = 'block'; 
+                    // Agregar opciones específicas para Memorix
+                    const option3 = document.createElement('option');
+                    option3.value = "3";
+                    option3.textContent = "Quimilab";
+                    tematicaSelect.appendChild(option3);
+
+                    const option4 = document.createElement('option');
+                    option4.value = "4";
+                    option4.textContent = "MagicRoom";
+                    tematicaSelect.appendChild(option4);
+
+                    const option5 = document.createElement('option');
+                    option5.value = "5";
+                    option5.textContent = "Ofimundo";
+                    tematicaSelect.appendChild(option5);
+
+                    const option6 = document.createElement('option');
+                    option6.value = "6";
+                    option6.textContent = "Bookify";
+                    tematicaSelect.appendChild(option6);
+                }
+            });
+        </script>
+    </body>
+    </html>
