@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Start</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../formulario/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../fontawesome/css/all.css">
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <h3>Tablas</h3>
+        <ul>
+            <li class="selected" onclick="showSection('usuarios')">Usuarios</li>
+            <li onclick="showSection('sala')">Sala</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <div class="memory"><img src="img/segundoMemory.png" class="iconno" alt=""><strong>Memory Start</strong>
+            </div>
+            <!-- <input type="text" id="search" placeholder="Buscar..." class="form-control mb-3"> -->
+
+            <div class="inputBuscar"> <i class="fa-solid fa-magnifying-glass icono"></i><input type="text" id="busqueda"
+                    placeholder="Buscar..." oninput="buscar()" class="form-control"></div>
+        </div>
+
+        <div id="usuarios" class="section">
+            <div class="encabezado">
+                <h3>Usuarios</h3>
+                <div class="insertar">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertar">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <table class="table" id="tabla-personas">
+                <thead class="color">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Celular</th>
+                        <th>Edad</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="eliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form action="../proceso/persona/eliminarPersona.php" method="POST">
+                            <input type="hidden" id="id_persona" name="id_persona2">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar</h1>
+                            Estás seguro de que quieres eliminar los datos de:<input type="text" class="nombrePersonaEliminar" id="nombreEliminar" readonly>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Agregar Persona  -->
+        <div class="modal fade" id="insertar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Insertar</h1>
+                        <form class="row" method="post" action="../proceso/persona/registrarPersona.php">
+                            <div class="col-md-12">
+                                <label for="nombre" class="form-label"> Nombre</label>
+                                <input type="text" class="form-control" id="txtNombre" name="txtNombre" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="apellido" class="form-label"> Apellido</label>
+                                <input type="text" class="form-control" id="txtApellido" name="txtApellido" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="celular" class="form-label">Celular</label>
+                                <input type="number" class="form-control" id="txtCelular" name="txtCelular" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid city.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="edad" class="form-label">Edad</label>
+                                <input type="number" class="form-control" id="txtEdad" name="txtEdad" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid zip.
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">Guardar <i class="fa-regular fa-floppy-disk"></i></button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Editar Persona  -->
+        <div class="modal fade" id="editar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="editarLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h1 class="modal-title fs-5" id="editarLabel">Editar Persona</h1>
+                        <form class="row" method="post" action="../proceso/persona/modificarPersona.php">
+                            <input type="hidden" id="editarId" name="editarId">
+                            <div class="col-md-12">
+                                <label for="nombre" class="form-label">Primer Nombre</label>
+                                <input type="text" class="form-control" id="editarNombre" name="editarNombre" required>
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="apellido" class="form-label">Primer Apellido</label>
+                                <input type="text" class="form-control" id="editarApellido" name="editarApellido"
+                                    required>
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="celular" class="form-label">Celular</label>
+                                <input type="number" class="form-control" id="editarCelular" name="editarCelular"
+                                    required>
+                                <div class="invalid-feedback">Please provide a valid city.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="edad" class="form-label">Edad</label>
+                                <input type="number" class="form-control" id="editarEdad" name="editarEdad" required>
+                                <div class="invalid-feedback">Please provide a valid zip.</div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">Guardar <i class="fa-regular fa-floppy-disk"></i></button>
+                                <button type="button" class="btn btn-secondary"data-bs-dismiss="modal">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="sala" class="section" style="display: none;">
+            <h3>Sala</h3>
+            <table class="table" id="sala-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>5</td>
+                        <td>Alberto Soto</td>
+                        <td>alberto@example.com</td>
+                        <td><img src="img/boton-editar.png" class="action-btn iconn" onclick="editRow(this)"></td>
+                        <td><img src="img/eliminar.png" class="action-btn iconn" onclick="deleteRow(this)"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="../formulario/bootstrap/js/bootstrap.js"></script>
+    <script src="../formulario/bootstrap/js/bootstrap.bundle.js"></script>
+
+    <script src="../proceso/js/persona.js"></script>
+    <script src="das.js"></script>
+
+
+
+</body>
+
+</html>
