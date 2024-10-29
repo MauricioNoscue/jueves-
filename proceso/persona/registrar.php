@@ -19,7 +19,7 @@ class Registrar extends Persona{
         ];
 
         $conexion->ejecutar($this->sqlInsert, $valores);
-        header('Location:http://localhost/jueves-/dasboard/index.html');
+        header('Location:http://localhost/2024/jueves-/dasboard/index.html');
 
     }
 }

@@ -163,6 +163,44 @@
     </div>
 </div>
 
+<!-- editarl para Crear Sala -->
+<div class="modal fade" id="editarSala" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="editarSalaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h1 class="modal-title fs-5" id="editarSalaLabel">Crear Sala</h1>
+                <form method="post" action="../proceso/sala/modificarSala.php">
+                    <div class="mb-3">
+                        <input type="hidden" id="editarId" name="editarId">
+                        <label for="creador" class="form-label">CREADOR</label>
+                        <div id="creador"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editarNombreSala" class="form-label">Nombre de la Sala:</label>
+                        <input type="text" id="editarNombreSala" name="editarNombreSala" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confi" class="form-label">Configuración</label>
+                        <div id="confi"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editarCapacidadSala" class="form-label">Capacidad:</label>
+                        <input type="number" id="editarCapacidadSala" name="editarCapacidadSala" class="form-control" required>
+                    </div>
+                    <input type="hidden" id="configuracion_id" name="configuracion_id">
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Editar</button>
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <!-- Agrega este script en sala.html, dentro del <head> o al final del <body> -->
 <script>
@@ -227,7 +265,7 @@ document.getElementById('tipoJuego').addEventListener('change', function () {
     <script src="../formulario/bootstrap/js/bootstrap.js"></script>
     <script src="../formulario/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="../proceso/js/sala.js"></script>
-    <script src="../proceso/js/persona.js"></script>
+    
     <script src="das.js"></script>
 
 

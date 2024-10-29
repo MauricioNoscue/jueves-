@@ -26,7 +26,7 @@ class Modificar extends Persona
         header('Content-Type: application/json');
         echo json_encode($resultado);
 
-        header('Location:http://localhost/jueves-/dasboard/index.html');
+        header('Location:http://localhost/2024/jueves-/dasboard/index.html');
     }
 
 }

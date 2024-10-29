@@ -226,88 +226,11 @@
             </table> -->
         </div>
 
-        <!-- Modal de configuración del juego -->
-        <div class="modal fade" id="insertarSala" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="insertarSalaLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <h1 class="modal-title fs-5" id="insertarSalaLabel">Configuración del Juego</h1>
-                        <form id="configuracionForm" method="POST" action="../proceso/sala/configuracionPrueba.php">
-                            <label for="tipoJuego">Tipo de Juego:</label>
-                            <select id="tipoJuego" name="txttipoJuego" class="form-control">
-                                <option value="">Selecciona un tipo de juego</option>
-                                <option value="1">PlanetScape</option>
-                                <option value="2">Memorix</option>
-                            </select>
+        
 
-                            <label for="modoJuego">Modo de Juego:</label>
-                            <select id="modoJuego" name="txtmodoJuego" class="form-control">
-                                <option value="">Selecciona un modo de juego</option>
-                                <option value="1">Solo</option>
-                                <option value="2">Multijugador</option>
-                            </select>
+        
 
-                            <div id="dificultadContainer" style="display: none;">
-                                <label for="dificultad">Dificultad:</label>
-                                <select id="dificultad" name="txtdificultad" class="form-control">
-                                    <option value="1">Básico</option>
-                                    <option value="2">Desafiante</option>
-                                    <option value="3">Pro</option>
-                                </select>
-                            </div>
-
-                            <label for="tematica">Temática:</label>
-                            <select id="tematica" name="txtTematica" class="form-control">
-                                <option value="">Selecciona una temática</option>
-                            </select>
-
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-success">Siguiente</button>
-                                <button type="button" class="btn btn-secondary"
-                                    data-bs-dismiss="modal">Cancelar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal para Crear Sala -->
-        <div class="modal fade" id="crearSalaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="crearSalaModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <h1 class="modal-title fs-5" id="crearSalaModalLabel">Crear Sala</h1>
-                        <form method="post" action="../proceso/sala/recicbirSala.php">
-                            <div class="mb-3">
-                                <label for="creador" class="form-label">CREADOR</label>
-                                <div id="creador"></div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nombreSala" class="form-label">Nombre de la Sala:</label>
-                                <input type="text" id="nombreSala" name="nombreSala" class="form-control" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="confi" class="form-label">Configuración</label>
-                                <div id="confi"></div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="capacidad" class="form-label">Capacidad:</label>
-                                <input type="number" id="capacidad" name="capacidad" class="form-control" required>
-                            </div>
-                            <input type="hidden" id="configuracion_id" name="configuracion_id">
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-success">Guardar</button>
-                                <button type="button" class="btn btn-secondary"
-                                    data-bs-dismiss="modal">Cancelar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
 
 <!-- Agrega este script en sala.html, dentro del <head> o al final del <body> -->
@@ -335,7 +258,7 @@
     <script src="../formulario/bootstrap/js/bootstrap.bundle.js"></script>
 
     <script src="../proceso/js/persona.js"></script>
-    <script src="../proceso/js/sala.js"></script>
+    
 
     <script src="das.js"></script>
     <script>
