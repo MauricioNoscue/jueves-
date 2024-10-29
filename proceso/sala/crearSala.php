@@ -26,6 +26,6 @@ class Crear extends Sala {
         ];
 
         $conexion->ejecutar($this->sqlInsert, $valores); // Ejecutar la inserción
-        header('Location:http://localhost/jueves-/dasboard/index.html'); // Redirigir después de la creación
+        header('Location:http://localhost/2024/jueves-/dasboard/sala.html'); // Redirigir después de la creación
     }
 }

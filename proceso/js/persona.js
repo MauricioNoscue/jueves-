@@ -1,7 +1,7 @@
 // script.js
 
 // URL de la consulta PHP que devuelve los datos en formato JSON
-const url = 'http://localhost/jueves-/proceso/persona/consultar.php';
+const url = 'http://localhost/2024/jueves-/proceso/persona/consultar.php';
 
 // Función para obtener los datos de las personas
 function obtenerPersonas(busqueda = '') {

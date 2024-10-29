@@ -17,7 +17,8 @@
         <h3>Tablas</h3>
         <ul>
             <li class="selected" onclick="showSection('usuarios')">Usuarios</li>
-            <li onclick="showSection('sala')">Sala</li>
+            <a href="sala.html"><li>Sala</li></a>
+            
         </ul>
     </div>
 
@@ -232,7 +233,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <h1 class="modal-title fs-5" id="insertarSalaLabel">Configuración del Juego</h1>
-                        <form id="configuracionForm" method="POST" action="configuracionPrueba.php">
+                        <form id="configuracionForm" method="POST" action="../proceso/sala/configuracionPrueba.php">
                             <label for="tipoJuego">Tipo de Juego:</label>
                             <select id="tipoJuego" name="txttipoJuego" class="form-control">
                                 <option value="">Selecciona un tipo de juego</option>
@@ -279,7 +280,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <h1 class="modal-title fs-5" id="crearSalaModalLabel">Crear Sala</h1>
-                        <form method="post" action="recicbirSala.php">
+                        <form method="post" action="../proceso/sala/recicbirSala.php">
                             <div class="mb-3">
                                 <label for="creador" class="form-label">CREADOR</label>
                                 <div id="creador"></div>
@@ -309,7 +310,24 @@
         </div>
 
 
-
+<!-- Agrega este script en sala.html, dentro del <head> o al final del <body> -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Verifica el hash en la URL
+            const hash = window.location.hash;
+    
+            // Mapea los hashes a los modales de Bootstrap
+            if (hash === "#insertarSala") {
+                // Usa Bootstrap para mostrar el modal
+                const insertarSalaModal = new bootstrap.Modal(document.getElementById('insertarSala'));
+                insertarSalaModal.show();
+            } else if (hash === "#crearSalaModal") {
+                const crearSalaModal = new bootstrap.Modal(document.getElementById('crearSalaModal'));
+                crearSalaModal.show();
+            }
+        });
+    </script>
+    
 
 
     </div>

@@ -16,8 +16,8 @@
     <div class="sidebar">
         <h3>Tablas</h3>
         <ul>
-            <li class="selected" onclick="showSection('usuarios')">Usuarios</li>
-            <li onclick="showSection('sala')">Sala</li>
+            <a href="index.html"><li>Usuario</li></a>
+            <li class="selected">Sala</li>
         </ul>
     </div>
 
@@ -31,16 +31,39 @@
                     placeholder="Buscar..." oninput="buscar()" class="form-control"></div>
         </div>
 
-        <div id="usuarios" class="section">
+
+
+       
+
+        <div id="sala" class="section">
             <div class="encabezado">
-                <h3>Usuarios</h3>
+                <h3>Sala</h3>
                 <div class="insertar">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertar">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertarSala">
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
             </div>
-            <table class="table" id="tabla-personas">
+            <table class="table" id="tabla-sala">
+                <thead class="color">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Sala</th>
+                        <th>Capacidad Sala</th>
+                        <th>Fecha Creaciom</th>
+                        <th>Tipo Juego</th>
+                        <th>Temática</th>
+                        <th>Dificultad</th>
+                        <th>Creador</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <!-- <table class="table" id="tabla-personas">
                 <thead class="color">
                     <tr>
                         <th>ID</th>
@@ -54,159 +77,156 @@
                 </thead>
                 <tbody>
                 </tbody>
-            </table>
-        </div>
-
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="eliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <form action="../proceso/persona/eliminarPersona.php" method="POST">
-                            <input type="hidden" id="id_persona" name="id_persona2">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar</h1>
-                            Estás seguro de que quieres eliminar los datos de:<input type="text" class="nombrePersonaEliminar" id="nombreEliminar" readonly>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
-                                    data-bs-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-danger">Eliminar</button>
-                            </div>
-
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Agregar Persona  -->
-        <div class="modal fade" id="insertar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Insertar</h1>
-                        <form class="row" method="post" action="../proceso/persona/registrarPersona.php">
-                            <div class="col-md-12">
-                                <label for="nombre" class="form-label"> Nombre</label>
-                                <input type="text" class="form-control" id="txtNombre" name="txtNombre" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="apellido" class="form-label"> Apellido</label>
-                                <input type="text" class="form-control" id="txtApellido" name="txtApellido" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="celular" class="form-label">Celular</label>
-                                <input type="number" class="form-control" id="txtCelular" name="txtCelular" required>
-                                <div class="invalid-feedback">
-                                    Please provide a valid city.
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="edad" class="form-label">Edad</label>
-                                <input type="number" class="form-control" id="txtEdad" name="txtEdad" required>
-                                <div class="invalid-feedback">
-                                    Please provide a valid zip.
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-success">Guardar <i class="fa-regular fa-floppy-disk"></i></button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            </div>
-                        </form>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        <!-- Editar Persona  -->
-        <div class="modal fade" id="editar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="editarLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <h1 class="modal-title fs-5" id="editarLabel">Editar Persona</h1>
-                        <form class="row" method="post" action="../proceso/persona/modificarPersona.php">
-                            <input type="hidden" id="editarId" name="editarId">
-                            <div class="col-md-12">
-                                <label for="nombre" class="form-label">Primer Nombre</label>
-                                <input type="text" class="form-control" id="editarNombre" name="editarNombre" required>
-                                <div class="valid-feedback">Looks good!</div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="apellido" class="form-label">Primer Apellido</label>
-                                <input type="text" class="form-control" id="editarApellido" name="editarApellido"
-                                    required>
-                                <div class="valid-feedback">Looks good!</div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="celular" class="form-label">Celular</label>
-                                <input type="number" class="form-control" id="editarCelular" name="editarCelular"
-                                    required>
-                                <div class="invalid-feedback">Please provide a valid city.</div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="edad" class="form-label">Edad</label>
-                                <input type="number" class="form-control" id="editarEdad" name="editarEdad" required>
-                                <div class="invalid-feedback">Please provide a valid zip.</div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-success">Guardar <i class="fa-regular fa-floppy-disk"></i></button>
-                                <button type="button" class="btn btn-secondary"data-bs-dismiss="modal">Cancelar</button>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div id="sala" class="section" style="display: none;">
-            <h3>Sala</h3>
-            <div class="insertar">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertar">
-                    <i class="fa-solid fa-plus"></i>
-                </button>
-            </div>
-            <table class="table" id="sala-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Email</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>5</td>
-                        <td>Alberto Soto</td>
-                        <td>alberto@example.com</td>
-                        <td><img src="img/boton-editar.png" class="action-btn iconn" onclick="editRow(this)"></td>
-                        <td><img src="img/eliminar.png" class="action-btn iconn" onclick="deleteRow(this)"></td>
-                    </tr>
-                </tbody>
-            </table>
+            </table> -->
         </div>
     </div>
+    <!-- Modal de configuración del juego -->
+    <div class="modal fade" id="insertarSala" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="insertarSalaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h1 class="modal-title fs-5" id="insertarSalaLabel">Configuración del Juego</h1>
+                <form id="configuracionForm" method="POST" action="../proceso/sala/configuracionPrueba.php">
+                    <label for="tipoJuego">Tipo de Juego:</label>
+                    <select id="tipoJuego" name="txttipoJuego" class="form-control">
+                        <option value="">Selecciona un tipo de juego</option>
+                        <option value="1">PlanetScape</option>
+                        <option value="2">Memorix</option>
+                    </select>
+
+                    <label for="modoJuego">Modo de Juego:</label>
+                    <select id="modoJuego" name="txtmodoJuego" class="form-control">
+                        <option value="">Selecciona un modo de juego</option>
+                        <option value="1">Solo</option>
+                        <option value="2">Multijugador</option>
+                    </select>
+
+                    <div id="dificultadContainer" style="display: none;">
+                        <label for="dificultad">Dificultad:</label>
+                        <select id="dificultad" name="txtdificultad" class="form-control">
+                            <option value="1">Básico</option>
+                            <option value="2">Desafiante</option>
+                            <option value="3">Pro</option>
+                        </select>
+                    </div>
+
+                    <label for="tematica">Temática:</label>
+                    <select id="tematica" name="txtTematica" class="form-control">
+                        <option value="">Selecciona una temática</option>
+                    </select>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Siguiente</button>
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Crear Sala -->
+<div class="modal fade" id="crearSalaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="crearSalaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h1 class="modal-title fs-5" id="crearSalaModalLabel">Crear Sala</h1>
+                <form method="post" action="../proceso/sala/recicbirSala.php">
+                    <div class="mb-3">
+                        <label for="creador" class="form-label">CREADOR</label>
+                        <div id="creador"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nombreSala" class="form-label">Nombre de la Sala:</label>
+                        <input type="text" id="nombreSala" name="nombreSala" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confi" class="form-label">Configuración</label>
+                        <div id="confi"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="capacidad" class="form-label">Capacidad:</label>
+                        <input type="number" id="capacidad" name="capacidad" class="form-control" required>
+                    </div>
+                    <input type="hidden" id="configuracion_id" name="configuracion_id">
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Agrega este script en sala.html, dentro del <head> o al final del <body> -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Verifica el hash en la URL
+    const hash = window.location.hash;
+
+    // Mapea los hashes a los modales de Bootstrap
+    if (hash === "#insertarSala") {
+        // Usa Bootstrap para mostrar el modal
+        const insertarSalaModal = new bootstrap.Modal(document.getElementById('insertarSala'));
+        insertarSalaModal.show();
+    } else if (hash === "#crearSalaModal") {
+        const crearSalaModal = new bootstrap.Modal(document.getElementById('crearSalaModal'));
+        crearSalaModal.show();
+    }
+});
+document.getElementById('tipoJuego').addEventListener('change', function () {
+    const dificultadContainer = document.getElementById('dificultadContainer');
+    const tematicaSelect = document.getElementById('tematica');
+
+    // Limpiar todas las opciones del select de temáticas
+    tematicaSelect.innerHTML = '<option value="">Selecciona una temática</option>';
+
+    if (this.value === "1") { // PlanetScape
+        dificultadContainer.style.display = 'none';
+        // Agregar opciones específicas para PlanetScape
+        const option1 = document.createElement('option');
+        option1.value = "1";
+        option1.textContent = "Arma tu nave";
+        tematicaSelect.appendChild(option1);
+
+        const option2 = document.createElement('option');
+        option2.value = "2";
+        option2.textContent = "Derrota el enemigo";
+        tematicaSelect.appendChild(option2);
+    } else if (this.value === "2") { // Memorix
+        dificultadContainer.style.display = 'block';
+        // Agregar opciones específicas para Memorix
+        const option3 = document.createElement('option');
+        option3.value = "3";
+        option3.textContent = "Quimilab";
+        tematicaSelect.appendChild(option3);
+
+        const option4 = document.createElement('option');
+        option4.value = "4";
+        option4.textContent = "MagicRoom";
+        tematicaSelect.appendChild(option4);
+
+        const option5 = document.createElement('option');
+        option5.value = "5";
+        option5.textContent = "Ofimundo";
+        tematicaSelect.appendChild(option5);
+
+        const option6 = document.createElement('option');
+        option6.value = "6";
+        option6.textContent = "Bookify";
+        tematicaSelect.appendChild(option6);
+    }
+});
+</script>
     <script src="../formulario/bootstrap/js/bootstrap.js"></script>
     <script src="../formulario/bootstrap/js/bootstrap.bundle.js"></script>
-
+    <script src="../proceso/js/sala.js"></script>
     <script src="../proceso/js/persona.js"></script>
     <script src="das.js"></script>
 

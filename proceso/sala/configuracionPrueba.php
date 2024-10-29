@@ -35,5 +35,5 @@ $conexion->ejecutar($sqlInsert, $valores);
 // // Redirigir a sala.html pasando el ID de configuración como parámetro en la URL
 // header("Location: sala.html?id=$idConfiguracion");
 
-header('Location:http://localhost/jueves-/proceso/sala/sala.html');
+header('Location:http://localhost/2024/jueves-/dasboard/sala.html#crearSalaModal');
 
