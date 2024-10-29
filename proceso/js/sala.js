@@ -28,7 +28,7 @@ fetch(urlSala)
                     <td>${sala.modojuego}</td>
                     <td>${sala.nombrecreador}</td>
                     <td><img src="img/boton-editar.png" class="action-btn iconn" onclick="modificar(${sala.id_sala}, '${sala.nombresala}', ${sala.capacidad})"></td>
-                    <td><img src="img/eliminar.png" class="action-btn iconn" onclick="eliminar(${sala.id_sala})"></td>
+                    <td><img src="img/eliminar.png" class="action-btn iconn" onclick="eliminar(${sala.id_sala},'${sala.nombresala}')"></td>
                 </tr>
             `;
     });
@@ -49,4 +49,12 @@ function modificar(id, nombre, capacidad) {
   // Mostrar el modal
   var modal = new bootstrap.Modal(document.getElementById("editarSala"));
   modal.show();
+}
+
+function eliminar(id, nombre){
+    document.getElementById('id_sala').value = id;
+    document.getElementById('nombreEliminar').value = nombre;
+
+    const modal2 = new bootstrap.Modal(document.getElementById('eliminar'));
+    modal2.show();
 }

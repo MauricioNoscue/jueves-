@@ -200,6 +200,31 @@
     </div>
 </div>
 
+<!-- eliminar -->
+<div class="modal fade" id="eliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body">
+            <form action="../proceso/sala/eliminarSala.php" method="POST">
+                <input type="hidden" id="id_sala" name="id_sala">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar</h1>
+                Estás seguro de que quieres eliminar los datos de:<input type="text"
+                    class="nombrePersonaEliminar" id="nombreEliminar" readonly>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+</div>
+
 
 
 <!-- Agrega este script en sala.html, dentro del <head> o al final del <body> -->
